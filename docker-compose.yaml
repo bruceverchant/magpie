@@ -1,5 +1,3 @@
-name: magpie
-
 services:
   magpie:
     image: ghcr.io/yetone/magpie:latest
@@ -12,21 +10,12 @@ services:
 
     environment:
       MAGPIE_ADDR: "0.0.0.0:3425"
-      MAGPIE_WEB_KEY: "pTVfJUWdp4mnltVlOkSTAshgvHzGooQkGeG3wvNzGWpNVEDmMu5HJrUVIwZJPkyO"
+      MAGPIE_WEB_KEY: "${MAGPIE_WEB_KEY:?Set MAGPIE_WEB_KEY}"
 
     volumes:
       - magpie_config:/config
 
-    command:
-      - web
-      - --addr
-      - "0.0.0.0:3430"
-      - --no-open
+    command: ["web", "--addr", "0.0.0.0:3430", "--no-open"]
 
 volumes:
-  magpie_config:
-    driver: local
-    driver_opts:
-      type: none
-      o: bind
-      device: /opt/magpie/config
+  magpie_config: {}
