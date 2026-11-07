@@ -9,7 +9,7 @@ services:
 
     environment:
       MAGPIE_ADDR: "0.0.0.0:3425"
-      MAGPIE_WEB_KEY: "dYGy2g6IjI_B2lp4YxkYGHKAbLDuCFDJswOyL5273eUMWfawp9rcUiskhjXsAOO2"
+      MAGPIE_WEB_KEY: "${MAGPIE_WEB_KEY:?MAGPIE_WEB_KEY is required}"
 
     volumes:
       - type: volume
