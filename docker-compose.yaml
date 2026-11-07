@@ -5,19 +5,16 @@ services:
     restart: unless-stopped
 
     ports:
-      - "3425:3425"
-      - "3430:3430"
+      - "3425:3430"
 
     environment:
       MAGPIE_ADDR: "0.0.0.0:3425"
-      MAGPIE_WEB_KEY: "dYGy2g6IjI_B2lp4YxkYGHKAbLDuCFDJswOyL5273eUMWfawp9rcUiskhjXsAOO2"
+      MAGPIE_WEB_KEY: "${MAGPIE_WEB_KEY:?Please set MAGPIE_WEB_KEY in .env}"
 
     volumes:
-      - type: volume
-        source: magpie
-        target: /config
+      - magpie_config:/config
 
     command: ["web", "--addr", "0.0.0.0:3430", "--no-open"]
 
 volumes:
-  magpie: {}
+  magpie_config: {}
