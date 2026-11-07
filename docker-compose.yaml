@@ -10,12 +10,14 @@ services:
 
     environment:
       MAGPIE_ADDR: "0.0.0.0:3425"
-      MAGPIE_WEB_KEY: "${MAGPIE_WEB_KEY:?Set MAGPIE_WEB_KEY}"
+      MAGPIE_WEB_KEY: "dYGy2g6IjI_B2lp4YxkYGHKAbLDuCFDJswOyL5273eUMWfawp9rcUiskhjXsAOO2"
 
     volumes:
-      - magpie_config:/config
+      - type: volume
+        source: magpie
+        target: /config
 
     command: ["web", "--addr", "0.0.0.0:3430", "--no-open"]
 
 volumes:
-  magpie_config: {}
+  magpie: {}
